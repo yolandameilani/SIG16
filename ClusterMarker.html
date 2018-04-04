@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Cluster Marker</title>
+        <style>
+            #map {
+                background-color: gray;
+                width: 100%;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+    <script>
+        function initMap(){
+				var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 10,
+				center: {lat: -5.400549, lng: 105.266272}
+			  });
+			  var infoWin = new google.maps.InfoWindow();
+            // console.log(map);
+            var labels = 'ABCDEFGHIJKL';
+        
+            var markers = locations.map(function(location, i) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+				 google.maps.event.addListener(marker, 'click', function(evt) {
+				  infoWin.setContent(location.info);
+				  infoWin.open(map, marker);
+				})
+				return marker;
+                }); 
+            console.log(locations);
+            console.log(markers);
+
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'images/m'});
+        
+            var d = markerCluster.distanceBetweenPoints_(markers[2].getPosition(),markers[4].getPosition());
+            console.log(markerCluster.getCalculator());
+            // var marker=new google.maps.Marker({position:center,map:map});
+            // console.log(marker);
+        }
+
+        var locations = [
+        {lat: -5.385802, lng: 105.288074, info:"<h3>RS Imanuel</h3><p>Alamat: Jalan Soekarno - Hatta No.1, Way Dadi, Sukarame, Way Dadi, Sukarame, Way Dadi, Sukarame, Kota Bandar Lampung, Lampung 35133<br><p>Telp: (0721) 704900"}, 
+        {lat: -5.392139, lng: 105.262335, info:"<h3>RS Advent</h3><p>Alamat: Jl. Teuku Umar No .48, Sidodadi, Kedaton, Surabaya, Kedaton, Kota Bandar Lampung, Lampung 35148<p>Telp: (0721) 703459<br>"}, 
+        {lat: -5.392033, lng: 105.276376, info: "<h3>RS Urip Sumoharjo</h3><br>Alamat: Jalan Urip Sumoharjo No. 200, Gunung Sulah, Way Halim, Gn. Sulah, Way Halim, Kota Bandar Lampung, Lampung 35132<p>Telp: (0721) 771323"},
+        {lat: -5.413394, lng: 105.267635, info: "<h3>RS Graha Husada</h3><p>Alamat: Jalan Gajah Mada No. 6 GH, Tanjung Agung, Tanjung Karang Timur, Tj. Agung Raya, Kedamaian, Kota Bandar Lampung, Lampung 35128<br><p>Telp: (0721) 240000"}, 
+        {lat: -5.402759, lng: 105.258670, info: "<h3>RS Abdul Moeloek</h3><p>Alamat: Jalan Dokter A. Rivai No. 6, Penengahan, Tanjung Karang Pusat, Penengahan, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35121<br><p>Telp: (0721) 703312"}, 
+        {lat: -5.403112, lng: 105.260396, info: "<h3>Puskesmas Rawat Inap Kedaton</h3><p>Alamat: Jl. Teuku Umar No.62, Sawah Brebes, Tj. Karang Tim., Kota Bandar Lampung, Lampung 35121<br><p>Telp: - <br>"}, 
+        {lat: -5.407281, lng: 105.263675, info: "<h3>Puskesmas Kampung Sawah</h3><br><p>Alamat: Jl. Arjuna No.4, Sawah Lama, Tj. Karang Tim., Kota Bandar Lampung, Lampung 35125<br><p>Telp: (0721) 250163 <br>"}, 
+        {lat: -5.414479, lng: 105.261125, info: "<h3>Puskesmas Kebun Jahe Enggal</h3><br><p>Alamat: Jl. Kamboja No.32, Enggal, Engal, Kota Bandar Lampung, Lampung 35128<br>'+'<p>Telp: (0721) 255074 <br>"}, 
+        {lat: -5.400293, lng: 105.244576, info: "<h3>Puskesmas Gedong Air</h3><br><p>Alamat: Jl. Sisingamangaraja, Gedong Air, Tj. Karang Bar., Kota Bandar Lampung, Lampung 35118<br><p>Telp: - <br>"},
+        {lat: -5.418962, lng: 105.259345, info: "<h3>Klinik THT Handayani</h3><br><p>Alamat: JL. Sriwijaya, 15, Bandarlampung, 35118, Enggal, Engal, Bandar Lampung City, Lampung 35213<br><p>Telp: (0721) 254393 <br>"}, 
+        {lat: -5.424903, lng: 105.258611, info: "<h3>Klinik Medika</h3><br><p>Alamat: Jl. P Diponegoro No.156, Enggal, Engal, Kota Bandar Lampung, Lampung 35214<br><p>Telp: (0721) 482218 <br>"}, 
+        {lat: -5.401656, lng: 105.260824, info: "<h3>Klinik Sejahtera</h3><br><p>Alamat: Jl. Teuku Umar No.80 B, Penengahan, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35112<br><p>Telp: (0721) 781701 <br>"} 
+      ]
+    </script>
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbUu4Ug1bXx7CKECeNst_1yU9uO3-__q8&callback=initMap"></script>
+    <script src="src/markerclusterer.js">
+    </script>
+</html>

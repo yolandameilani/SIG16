@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Latihan Google  map</title>
+  <style type='text/css'>
+  #peta {
+  width: 100%;
+  height: 400px;
+
+} </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <script type="text/javascript">
+    
+    (function() {
+  window.onload = function() {
+var map;
+    //Parameter Google maps
+    var options = {
+      zoom: 8, //level zoom
+      //posisi tengah peta
+      center: new google.maps.LatLng(-5.367284, 105.244935),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    
+     // Buat peta di 
+    var map = new google.maps.Map(document.getElementById('peta'), options);
+     // Tambahkan Marker 
+     var locations = [
+        //RS Imanuel
+        ['<h3>RS Imanuel</h3></br>'+'<p>Alamat: Jalan Soekarno - Hatta No.1, Way Dadi, Sukarame, Way Dadi, Sukarame, Way Dadi, Sukarame, Kota Bandar Lampung, Lampung 35133<br>'+'<p>Telp: (0721) 704900<br>'+'<p><a href="https://rsimanuellampung.com/" target="blank">https://rsimanuellampung.com/</a>', -5.385802, 105.288074],
+        //RS Advent
+        ['<h3>RS Advent</h3><br>'+'<p>Alamat: Jl. Teuku Umar No .48, Sidodadi, Kedaton, Surabaya, Kedaton, Kota Bandar Lampung, Lampung 35148'+'<p>Telp: (0721) 703459<br>'+'<p><a href="rsabl.co.id" target="blank">rsabl.co.id</a>', -5.392139, 105.262335],
+        //RS Urip Sumoharjo
+        ['<h3>RS Urip Sumoharjo</h3><br>'+'Alamat: Jalan Urip Sumoharjo No. 200, Gunung Sulah, Way Halim, Gn. Sulah, Way Halim, Kota Bandar Lampung, Lampung 35132'+'<p>Telp: (0721) 771323'+'<p><a href="http://www.rsuripsumoharjo.com/" target="blank">http://www.rsuripsumoharjo.com/</a>', -5.392033, 105.276376],
+        //RS Graha Husada
+        ['<h3>RS Graha Husada</h3><br>'+'<p>Alamat: Jalan Gajah Mada No. 6 GH, Tanjung Agung, Tanjung Karang Timur, Tj. Agung Raya, Kedamaian, Kota Bandar Lampung, Lampung 35128<br>'+'<p>Telp: (0721) 240000<br>'+'<p><a href="http://www.rsuripsumoharjo.com/" target="blank">http://www.rsuripsumoharjo.com/</a>', -5.413394, 105.267635],
+        //RS Abdul Moeloek
+		    ['<h3>RS Abdul Moeloek</h3><br>'+'<p>Alamat: Jalan Dokter A. Rivai No. 6, Penengahan, Tanjung Karang Pusat, Penengahan, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35121<br>'+'<p>Telp: (0721) 703312<br>'+'<p><a href="http://www.rsudabdoelmoeloek.com/" target="blank">http://www.rsudabdoelmoeloek.com/</a>', -5.402759, 105.258670],
+        //Puskesmas Rawat Inap Kedaton
+		    ['<h3>Puskesmas Rawat Inap Kedaton</h3><br>'+'<p>Alamat: Jl. Teuku Umar No.62, Sawah Brebes, Tj. Karang Tim., Kota Bandar Lampung, Lampung 35121<br>'+'<p>Telp: - <br>', -5.403112, 105.260396],
+        //Puskesmas Kampung Sawah
+		    ['<h3>Puskesmas Kampung Sawah</h3><br>'+'<p>Alamat: Jl. Arjuna No.4, Sawah Lama, Tj. Karang Tim., Kota Bandar Lampung, Lampung 35125<br>'+'<p>Telp: (0721) 250163 <br>', -5.407281, 105.263675],
+        //Puskesmas Kebun Jahe Enggal
+		    ['<h3>Puskesmas Kebun Jahe Enggal</h3><br>'+'<p>Alamat: Jl. Kamboja No.32, Enggal, Engal, Kota Bandar Lampung, Lampung 35128<br>'+'<p>Telp: (0721) 255074 <br>', -5.414479, 105.261125],
+        //Puskesmas Gedong Air
+        ['<h3>Puskesmas Gedong Air</h3><br>'+'<p>Alamat: Jl. Sisingamangaraja, Gedong Air, Tj. Karang Bar., Kota Bandar Lampung, Lampung 35118<br>'+'<p>Telp: - <br>', -5.400293, 105.244576],
+        //Klinik THT Handayani
+        ['<h3>Klinik THT Handayani</h3><br>'+'<p>Alamat: JL. Sriwijaya, 15, Bandarlampung, 35118, Enggal, Engal, Bandar Lampung City, Lampung 35213<br>'+'<p>Telp: (0721) 254393 <br>', -5.418962, 105.259345],
+        //Klinik Medika
+        ['<h3>Klinik Medika</h3><br>'+'<p>Alamat: Jl. P Diponegoro No.156, Enggal, Engal, Kota Bandar Lampung, Lampung 35214<br>'+'<p>Telp: (0721) 482218 <br>', -5.424903, 105.258611],
+        //Klinik Sejahtera
+        ['<h3>Klinik Sejahtera</h3><br>'+'<p>Alamat: Jl. Teuku Umar No.80 B, Penengahan, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35112<br>'+'<p>Telp: (0721) 781701 <br>', -5.401656, 105.260824],
+    
+    ];
+      var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+     /* kode untuk menampilkan banyak marker */
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+         icon: 'images/pin.png'
+      });
+     /* menambahkan event clik untuk menampikan
+          infowindows dengan isi sesuai denga
+        marker yang di klik */
+        
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  
+
+  };
+})();
+
+    </script>
+  </head>
+  <body>
+    
+    <div id="peta"></div>
+
+  </body>
+</html>
+
