@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width">
     
     <title>Tugas SIG</title>
-
+    <script src="http://maps.googleapis.com/maps/api/js"></script> 
+    
     <style>
         #map{
             margin-left: 50px;
@@ -60,13 +61,30 @@
                     document.getElementById("info").value = posisiTitik.info(); 
                     } 
                 
+                function initialize() { 
+                    var propertiPeta = { 
+                        center:new google.maps.LatLng(-5.3971, 105.2668), 
+                        zoom:13, 
+                        mapTypeId:google.maps.MapTypeId.ROADMAP 
+                    }; 
+   
+                    var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta); 
+                    var infoWindow = new google.maps.InfoWindow; 
+                    google.maps.event.addListener(peta, 'click', function(event) { 
+                    taruhMarker(this, event.latLng); 
+                    }); 
+                    google.maps.event.addListener(peta,'rightclick',function(event){ 
+                    marker.setPosition(null); 
+                    }); 
+                } 
+                
                 map.addListener('click',
                 function(event){
                     marker.setPosition(event.latLng);
                     console.log(marker.position.toString());
                 });   
 
-            }
+               }
             </script>
 
             <div id=info>
