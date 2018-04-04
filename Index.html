@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width">
+    
     <title>Tugas SIG</title>
 
     <style>
@@ -44,12 +44,22 @@
                 maxZoom : 16,
                 center : bdl
                 });
-
-                var marker = new google.maps.Marker({ //membuat marker ada titik pusat
-                position: bdl,
-                map: map
-                });
-
+                
+                var marker; 
+                function taruhMarker(peta, posisiTitik){ 
+                    if( marker ){ 
+                         marker.setPosition(posisiTitik); 
+                    } else { 
+                        marker = new google.maps.Marker({ 
+                        position: posisiTitik, 
+                        map: peta 
+                        }); 
+                    } 
+                    document.getElementById("lat").value = posisiTitik.lat(); 
+                    document.getElementById("lng").value = posisiTitik.lng(); 
+                    document.getElementById("info").value = posisiTitik.info(); 
+                    } 
+                
                 map.addListener('click',
                 function(event){
                     marker.setPosition(event.latLng);
