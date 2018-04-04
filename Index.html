@@ -23,9 +23,11 @@
                     } 
                 
                 function initialize() { 
+                    var bdl = {lat :-5.3971, lng:105.2668};
+
                     var propertiPeta = { 
-                        center:new google.maps.LatLng(-5.3971, 105.2668), 
-                        zoom:14, 
+                        center : bdl,
+                        zoom:15, 
                         mapTypeId:google.maps.MapTypeId.ROADMAP 
                     }; 
    
@@ -64,7 +66,7 @@
 
 <body>
     <div id="header"><h1>Sistem Informasi Geografis</h1></div>
-    <div id="googleMap" style="width:600px;height:300px;"></div>
+    <div id="googleMap" style="margin-left:50px;width:600px;height:300px;"></div>
     <form style="width: 300px" action="" method="post"> 
     <table> 
         
