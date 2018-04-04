@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     
     <title>Tugas SIG</title>
@@ -72,21 +72,32 @@
 </head>
 
 <body>
-    <div id="header"><h1>Sistem Informasi Geografis</h1></div>
-    <div class="row">
-        <div class="coloumn">
-            <div id="map"> </div>
-
-            <div id=info>
-                <br>
-                <input type="text" name="marker.lng" placeholder="Longitude" value=""> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" name="marker.lat" placeholder="Latitude" value=""><br><br>
-                <textarea name="tempat"></textarea><br><br>
+    <div id="googleMap" style="width:600px;height:300px;"></div>
+    <form style="width: 300px" action="" method="post"> 
+    <table> 
+        
+    <tr>
+        <td>
+            <br>
+            <input type="text" name="marker.lng" placeholder="Longitude" value=""> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>
+             <input type="text" name="marker.lat" placeholder="Latitude" value=""><br><br>
+        </td>
+     </tr>
+     <tr>
+         <td>
+             <textarea name="tempat"></textarea><br><br>
+         </td>
+      </tr>
+      <tr> 
+          <td>
                 <button type="submit">Save</button>
-            </div>
-        </div>
-
-    </div>
+          </td>
+        </table>
+      </form> 
 
 </body>
 
